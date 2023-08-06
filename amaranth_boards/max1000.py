@@ -6,7 +6,7 @@ from amaranth.vendor.intel import IntelPlatform
 from .resources import *
 
 
-__all__ = [ "MAX1000Platform" ]
+__all__ = [ "MAX1000Platform", "MAX1000Platform_32M" ]
 
 
 class MAX1000Platform(IntelPlatform):
@@ -65,16 +65,7 @@ class MAX1000Platform(IntelPlatform):
         Resource("D14",    0, Pins("G12", dir="io", conn=("j", 1)), Attrs(io_standard="3.3-V LVCMOS")),
         Resource("D11_R",  0, Pins("B11", dir="io", conn=("j", 1)), Attrs(io_standard="3.3-V LVCMOS", pullup=1)),
         Resource("D12_R",  0, Pins("G13", dir="io", conn=("j", 1)), Attrs(io_standard="3.3-V LVCMOS", pullup=1)),
-
-        Resource("pio_01", 0, Pins("M3",  dir="io", conn=("pmod", 0)), Attrs(io_standard="3.3-V LVCMOS")),
-        Resource("pio_02", 0, Pins("L3",  dir="io", conn=("pmod", 0)), Attrs(io_standard="3.3-V LVCMOS")),
-        Resource("pio_03", 0, Pins("M2",  dir="io", conn=("pmod", 0)), Attrs(io_standard="3.3-V LVCMOS")),
-        Resource("pio_04", 0, Pins("M1",  dir="io", conn=("pmod", 0)), Attrs(io_standard="3.3-V LVCMOS")),
-        Resource("pio_05", 0, Pins("N3",  dir="io", conn=("pmod", 0)), Attrs(io_standard="3.3-V LVCMOS")),
-        Resource("pio_06", 0, Pins("N2",  dir="io", conn=("pmod", 0)), Attrs(io_standard="3.3-V LVCMOS")),
-        Resource("pio_07", 0, Pins("K2",  dir="io", conn=("pmod", 0)), Attrs(io_standard="3.3-V LVCMOS")),
-        Resource("pio_08", 0, Pins("K1",  dir="io", conn=("pmod", 0)), Attrs(io_standard="3.3-V LVCMOS")),
-
+        
         UARTResource(0,
             rx="B4", tx="A4", rts="B5", cts="A6", dtr="B6", dsr="A7",
             attrs=Attrs(io_standard="3.3-V LVCMOS"), role="dce"
@@ -96,7 +87,9 @@ class MAX1000Platform(IntelPlatform):
         with products.extract(f"{name}.sof") as bitstream_filename:
             subprocess.check_call([quartus_pgm, "--haltcc", "--mode", "JTAG",
                                    "--operation", "P;" + bitstream_filename])
-            
+
+class MAX1000Platform_32M(MAX1000Platform):
+    device = "10M16SA"
 
 if __name__ == "__main__":
     from .test.blinky import Blinky
