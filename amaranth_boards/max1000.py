@@ -48,24 +48,6 @@ class MAX1000Platform(IntelPlatform):
             Attrs(io_standard="3.3-V LVCMOS")
         ),
         
-        Resource("D0",     0, Pins("H8",  dir="io", conn=("j", 0)), Attrs(io_standard="3.3-V LVCMOS")),
-        Resource("D1",     0, Pins("K10", dir="io", conn=("j", 0)), Attrs(io_standard="3.3-V LVCMOS")),
-        Resource("D2",     0, Pins("H5",  dir="io", conn=("j", 0)), Attrs(io_standard="3.3-V LVCMOS")),
-        Resource("D3",     0, Pins("H4",  dir="io", conn=("j", 0)), Attrs(io_standard="3.3-V LVCMOS")),
-        Resource("D4",     0, Pins("J1",  dir="io", conn=("j", 0)), Attrs(io_standard="3.3-V LVCMOS")),
-        Resource("D5",     0, Pins("J2",  dir="io", conn=("j", 0)), Attrs(io_standard="3.3-V LVCMOS")),
-        Resource("D6",     0, Pins("L12", dir="io", conn=("j", 1)), Attrs(io_standard="3.3-V LVCMOS")),
-        Resource("D7",     0, Pins("J12", dir="io", conn=("j", 1)), Attrs(io_standard="3.3-V LVCMOS")),
-        Resource("D8",     0, Pins("J13", dir="io", conn=("j", 1)), Attrs(io_standard="3.3-V LVCMOS")),
-        Resource("D9",     0, Pins("K11", dir="io", conn=("j", 1)), Attrs(io_standard="3.3-V LVCMOS")),
-        Resource("D10",    0, Pins("K12", dir="io", conn=("j", 1)), Attrs(io_standard="3.3-V LVCMOS")),
-        Resource("D11",    0, Pins("J10", dir="io", conn=("j", 1)), Attrs(io_standard="3.3-V LVCMOS")),
-        Resource("D12",    0, Pins("H10", dir="io", conn=("j", 1)), Attrs(io_standard="3.3-V LVCMOS")),
-        Resource("D13",    0, Pins("H13", dir="io", conn=("j", 1)), Attrs(io_standard="3.3-V LVCMOS")),
-        Resource("D14",    0, Pins("G12", dir="io", conn=("j", 1)), Attrs(io_standard="3.3-V LVCMOS")),
-        Resource("D11_R",  0, Pins("B11", dir="io", conn=("j", 1)), Attrs(io_standard="3.3-V LVCMOS", pullup=1)),
-        Resource("D12_R",  0, Pins("G13", dir="io", conn=("j", 1)), Attrs(io_standard="3.3-V LVCMOS", pullup=1)),
-        
         UARTResource(0,
             rx="B4", tx="A4", rts="B5", cts="A6", dtr="B6", dsr="A7",
             attrs=Attrs(io_standard="3.3-V LVCMOS"), role="dce"
